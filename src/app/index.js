@@ -5,8 +5,7 @@ export const App = () => {
 
     return (
         <div className="App">
-
-        <TableLayout/>
+            <TableLayout/>
         </div>
     )
 }
