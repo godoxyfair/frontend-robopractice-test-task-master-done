@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/frontend-robopractice-test-task-master-done/static/css/main.122a38db.css",
+    "main.js": "/frontend-robopractice-test-task-master-done/static/js/main.4c86562d.js",
+    "static/media/red_mad_robot_logo.png": "/frontend-robopractice-test-task-master-done/static/media/red_mad_robot_logo.00f23284ce28b643fa35.png",
+    "index.html": "/frontend-robopractice-test-task-master-done/index.html",
+    "main.122a38db.css.map": "/frontend-robopractice-test-task-master-done/static/css/main.122a38db.css.map",
+    "main.4c86562d.js.map": "/frontend-robopractice-test-task-master-done/static/js/main.4c86562d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.122a38db.css",
+    "static/js/main.4c86562d.js"
+  ]
+}
