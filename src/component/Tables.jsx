@@ -235,7 +235,6 @@ const Tables = () => {
             dataIndex: 'Total',
             fixed: 'right',
             width: 120,
-            defaultSortOrder: 'descend',
             sorter: (a, b) => moment.duration(a.Total).subtract(moment.duration(b.Total))
         })
 
