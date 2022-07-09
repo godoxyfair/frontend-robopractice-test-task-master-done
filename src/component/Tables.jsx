@@ -32,13 +32,15 @@ const Tables = () => {
     //     '2021-05-16', '2021-05-17', '2021-05-18', '2021-05-19', '2021-05-20', '2021-05-21', '2021-05-22', '2021-05-23',
     //     '2021-05-24', '2021-05-25', '2021-05-26', '2021-05-27', '2021-05-28', '2021-05-29', '2021-05-30', '2021-05-31'
     // ]
-    //Заполняем массив датами для получания dataIndex и обработки users
+    //Заполняем массив датами календаря для получания dataIndex и обработки users
+    //Fill the array with calendar dates to get dataIndex and process users in table
     for(var trueArrayDays=[],dt=new Date("2021-05-01"); dt<=new Date("2021-05-31"); dt.setDate(dt.getDate()+1)){
         trueArrayDays.push(new Date(dt).toISOString().slice(0,10));
     }
 
 
-
+    //Преобразование полученных данных
+    //Convert received data
     useEffect(() => {
 
         if (data && data?.length > 0) {
@@ -51,6 +53,8 @@ const Tables = () => {
                 }
                 return {id: user?.id, Fullname: user?.Fullname, Days: newArrayDate}
             }
+            //Получим данные с недостающими датами и заменим End Start на 00:00
+            //Get data with missing dates and replace End Start with 00:00
             const newUsers = data.map(user => {
                 return arrayMutation(user)
             })
@@ -65,19 +69,20 @@ const Tables = () => {
                     return res.hours() + ":" + res.minutes();
                 }
 
-                //ArrayWithDuration возвращает обогащенныей array Days
+                //ArrayWithDuration возвращает обогащенныей durationMs array Days
+                //ArrayWithDuration returns improved durationMs array Days
                 const arrayWithDuration = user.Days.map((elem) => {
                     return {...elem, durationMs: getElementDuration(elem)}
                 })
                 return {id: user?.id, Fullname: user?.Fullname, Days: arrayWithDuration}
 
             }
-
+            //Получим данный с durationMs
+            //Add the given durationMs
             const newUsersDuration = newUsers.map(user => {
                 return getDataDuration(user)
             })
 
-            //Get Total work time
             function getUsersDurationWithTotal(user) {
                 let sum = moment.duration("00:00");
                 let temp = 0;
@@ -89,6 +94,8 @@ const Tables = () => {
                 let result = 24 * sum.days() + sum.hours() + ":" + sum.minutes()
                 return {id: user?.id, Fullname: user?.Fullname, Days: user?.Days, Total: result}
             }
+            //Получим данные с Total для user
+            //Get data from Total for user
             const newUsersDurationTotal = newUsersDuration.map(user => {
                 return getUsersDurationWithTotal(user)
             })
@@ -101,6 +108,8 @@ const Tables = () => {
                 }, {id: user?.id, Fullname: user?.Fullname, Total: user?.Total})
                 return dataObjectMy
             }
+            //Заполним объект всеми нужными для работы с таблицей данными
+            //Fill the object with all the data needed to work with the table
             const newUsersDate = newUsersDurationTotal.map(user => {
                 return userArrayToObject(user)
             })
