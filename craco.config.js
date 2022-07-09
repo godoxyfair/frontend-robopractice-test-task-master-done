@@ -13,6 +13,8 @@ module.exports = {
                             '@table-border-color' : '#3D1E1E',
                             '@table-header-bg' : '#B7241F',
                             '@table-header-color' : '#141414',
+                            '@table-body-sort-bg' : '#141414',
+                            '@table-header-sort-bg' : '#E93323'
                         },
                         javascriptEnabled: true,
                     },
